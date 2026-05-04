@@ -1,0 +1,1537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#08080f">
+<meta name="description" content="Drop-in AI chatbot that reads your site and answers visitors instantly. Zero dependencies, lazy-loaded, no backend required. Supports DeepSeek, Groq & GLM-4 with smart offline fallback.">
+<meta name="keywords" content="AI chatbot, free chatbot widget, website chatbot, no backend chatbot, WebChat.js, DeepSeek chatbot, Groq chatbot, GLM-4 chatbot, JavaScript chatbot, embeddable AI chat, chatbot without backend, site scraping chatbot, offline chatbot, lazy load chatbot, open source chatbot">
+<meta name="author" content="Niloy Kanti Paul">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="rating" content="general">
+<meta name="format-detection" content="telephone=no">
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L1J90G5S42"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-L1J90G5S42');
+</script>
+<meta name="msvalidate.01" content="227BF01D2BC9D42FED6873CDF5378DE3" />
+
+<!-- Canonical -->
+<link rel="canonical" href="https://webchat-js.pages.dev/">
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-96x96.png">
+<link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+<link rel="manifest" href="manifest.json">
+
+<!-- Preconnect & DNS Prefetch -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://webchat-js.pages.dev">
+
+<!-- Open Graph -->
+<title>WebChat.js — Free AI Chatbot Widget for Any Website (No Backend)</title>
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://webchat-js.pages.dev/">
+<meta property="og:site_name" content="WebChat.js">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="WebChat.js — Free AI Chatbot for Any Website">
+<meta property="og:description" content="Zero-dependency, lazy-loaded AI chatbot. Auto-scrapes your site, uses DeepSeek/Groq AI, and works offline. Install in 1 line of code.">
+<meta property="og:image" content="https://webchat-js.pages.dev/assets/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="WebChat.js — Free AI chatbot widget that reads your website and answers visitors instantly with no backend required">
+<meta property="og:image:type" content="image/png">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@dev_nkp">
+<meta name="twitter:creator" content="@dev_nkp">
+<meta name="twitter:title" content="Free AI Chatbot Widget - No Backend Required">
+<meta name="twitter:description" content="Drop-in JavaScript chatbot that auto-reads your site and answers visitors using DeepSeek, Groq, or local fallback.">
+<meta name="twitter:image" content="https://webchat-js.pages.dev/assets/images/og-image.png">
+<meta name="twitter:image:alt" content="WebChat.js chatbot widget preview">
+
+<!-- Author Link -->
+<link rel="author" href="https://dev-nkp.github.io/">
+
+<!-- ═══════ STRUCTURED DATA ═══════ -->
+
+<!-- 1. WebPage + BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "WebChat.js — Free AI Chatbot Widget for Any Website",
+  "url": "https://webchat-js.pages.dev/",
+  "description": "AI-powered website chatbot that automatically reads your entire site and answers visitor questions in real time — no backend required.",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "WebChat.js",
+    "url": "https://webchat-js.pages.dev/"
+  },
+  "about": {
+    "@type": "SoftwareApplication",
+    "name": "WebChat.js",
+    "url": "https://webchat-js.pages.dev/"
+  },
+  "breadcrumb": {
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://webchat-js.pages.dev/" },
+      { "@type": "ListItem", "position": 2, "name": "Features", "item": "https://webchat-js.pages.dev/#features" },
+      { "@type": "ListItem", "position": 3, "name": "Installation", "item": "https://webchat-js.pages.dev/#install" },
+      { "@type": "ListItem", "position": 4, "name": "FAQ", "item": "https://webchat-js.pages.dev/#faq" }
+    ]
+  }
+}
+</script>
+
+<!-- 2. SoftwareApplication -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "WebChat.js",
+  "url": "https://webchat-js.pages.dev/",
+  "applicationCategory": "DeveloperApplication",
+  "operatingSystem": "Any",
+  "programmingLanguage": "JavaScript",
+  "softwareVersion": "1.0.0",
+  "license": "https://opensource.org/licenses/MIT",
+  "author": {
+    "@type": "Person",
+    "name": "Niloy Kanti Paul",
+    "url": "https://dev-nkp.github.io/",
+    "sameAs": [
+      "https://github.com/dev-nkp",
+      "https://www.linkedin.com/in/niloy-kanti-paul/"
+    ]
+  },
+  "description": "AI-powered website chatbot that automatically reads your entire site and answers visitor questions in real time — no backend required.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "featureList": [
+    "Automatic Website Scraping",
+    "Smart Offline Fallback",
+    "DeepSeek, Groq, GLM-4 AI Providers",
+    "Zero-Impact Lazy Loading",
+    "Sentiment Detection",
+    "Mobile-First Responsive Design",
+    "Dynamic Quick Suggestions",
+    "Contextual Engagement Popups",
+    "Conversation Export",
+    "In-Chat Search"
+  ],
+  "installUrl": "https://webchat-js.pages.dev/#install",
+  "downloadUrl": "https://github.com/DEV-NKP/WebChat"
+}
+</script>
+
+<!-- 3. Person (Author — separate for rich results) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Niloy Kanti Paul",
+  "url": "https://dev-nkp.github.io/",
+  "image": "https://webchat-js.pages.dev/assets/images/author-nkp.png",
+  "jobTitle": "Software Engineer & AI Developer",
+  "sameAs": [
+    "https://github.com/dev-nkp",
+    "https://www.linkedin.com/in/niloy-kanti-paul/"
+  ],
+  "knowsAbout": ["JavaScript", "AI Integration", "Salesforce", "Deep Learning", "Web Development"]
+}
+</script>
+
+<!-- 4. FAQPage (MUST match visible FAQ content exactly) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is WebChat.js?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WebChat.js is a free, open-source AI chatbot widget that you can embed on any website with a single script tag. It automatically reads your site's content, builds a knowledge base, and answers visitor questions using AI providers like DeepSeek, Groq, or GLM-4 — all without requiring any backend server, database, or API gateway."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is WebChat.js really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, WebChat.js is 100% free and open-source under the MIT license. The widget itself has zero cost. The AI providers offer free tiers: Groq provides a generous free tier, GLM-4 (BigModel.cn) offers free API access, and DeepSeek has very affordable pricing. Even without any API key, the built-in local fallback engine answers questions from your scraped site content at no cost."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does WebChat.js work without a backend?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WebChat.js runs entirely in the browser. When a user opens the chat, it scrapes the current page and up to 10 linked internal pages, extracting headings, text, FAQs, and navigation. This content is stored in memory and sent as context directly to AI provider APIs (DeepSeek, Groq, GLM-4) from the client side. No server, no database, no proxy — just browser-to-API communication."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does WebChat.js slow down my website?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. WebChat.js uses a two-stage lazy loading strategy. On initial page load, only a small toggle button (under 2KB rendered) is added to the DOM. The full chat UI, CSS, and site scraping are all deferred until the user actually clicks the button — or after a configurable timeout (default 2 seconds). This guarantees zero impact on Core Web Vitals scores like LCP, FID, and CLS."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI providers does WebChat.js support?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WebChat.js supports three cloud AI providers in priority order: DeepSeek (highest quality, priority 1), Groq (ultra-fast Llama models, priority 2), and GLM-4 by BigModel.cn (free tier, priority 3). If all three fail or no API keys are provided, it automatically falls back to a built-in local NLP engine that answers from your scraped site content — so the bot always responds."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use WebChat.js with React, Vue, Next.js, or other frameworks?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. WebChat.js is framework-agnostic because it's a vanilla JavaScript widget that manipulates its own isolated DOM subtree. It works with React, Vue, Angular, Next.js, Nuxt, Svelte, Astro, Hugo, WordPress, Shopify, Webflow, and any platform that renders HTML. Just add the script tag to your template or use the programmatic API for finer control."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many pages can WebChat.js scrape?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WebChat.js scrapes the current page plus up to 10 internally linked pages, extracting up to approximately 12,000 characters of context. This is carefully balanced to provide comprehensive knowledge while staying within AI provider token limits and maintaining fast response times. Only pages from the same domain are scraped — external links are ignored."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is WebChat.js GDPR and privacy compliant?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WebChat.js is designed with privacy in mind. Conversations are stored only in the browser's memory (sessionStorage) and are never sent to any server except the AI provider API you configure. There is no analytics tracking, no cookies, and no third-party data sharing built in. However, since API calls do send user messages to your chosen AI provider, you should review that provider's data processing terms and include appropriate disclosures in your privacy policy."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Sora:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --p: #7c3aed;
+  --a: #00e5cc;
+  --p-rgb: 124, 58, 237;
+  --a-rgb: 0, 229, 204;
+  --bg: #08080f;
+  --bg2: #0e0e1a;
+  --bg3: #141426;
+  --surface: rgba(14,14,26,0.9);
+  --t1: #f2f2fd;
+  --t2: #8888b5;
+  --t3: #444468;
+  --b1: rgba(255,255,255,0.05);
+  --b2: rgba(255,255,255,0.09);
+  --b3: rgba(255,255,255,0.15);
+  --font-display: 'Clash Display', sans-serif;
+  --font-body: 'Sora', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--t1);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; z-index: 0; opacity: 0.4;
+}
+
+.bg-orbs { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.orb { position: absolute; border-radius: 50%; filter: blur(80px); animation: orb-drift 20s ease-in-out infinite; }
+.orb-1 { width: 600px; height: 600px; background: rgba(124,58,237,0.12); top: -200px; left: -100px; animation-duration: 25s; }
+.orb-2 { width: 500px; height: 500px; background: rgba(0,229,204,0.08); top: 30%; right: -150px; animation-duration: 30s; animation-delay: -10s; }
+.orb-3 { width: 400px; height: 400px; background: rgba(124,58,237,0.08); bottom: 10%; left: 30%; animation-duration: 22s; animation-delay: -5s; }
+@keyframes orb-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(30px, -40px) scale(1.05); }
+  50% { transform: translate(-20px, 30px) scale(0.95); }
+  75% { transform: translate(40px, 20px) scale(1.02); }
+}
+
+.grid-bg {
+  position: fixed; inset: 0;
+  background-image: linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none; z-index: 0;
+  mask-image: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.4) 40%, black 100%);
+}
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 16px 0;
+  background: rgba(8,8,15,0.8);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid var(--b1);
+  transition: padding 0.3s;
+}
+nav.scrolled { padding: 10px 0; }
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: 1200px; margin: 0 auto; padding: 0 24px;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-size: 20px; font-weight: 700;
+  color: var(--t1); text-decoration: none;
+}
+.nav-logo-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--p), var(--a));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+}
+.nav-links { display: flex; align-items: center; gap: 8px; }
+.nav-links a {
+  padding: 7px 14px; border-radius: 8px;
+  font-size: 14px; font-weight: 500; color: var(--t2);
+  text-decoration: none; transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--t1); background: var(--b1); }
+.nav-cta {
+  background: linear-gradient(135deg, var(--p), rgba(0,229,204,0.8)) !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.4);
+}
+.nav-cta:hover { box-shadow: 0 6px 28px rgba(124,58,237,0.6) !important; transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 140px 24px 80px; position: relative;
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(124,58,237,0.12); border: 1px solid rgba(124,58,237,0.3);
+  border-radius: 100px; padding: 6px 16px;
+  font-size: 12px; font-weight: 600; color: rgba(124,58,237,1);
+  letter-spacing: 0.5px; text-transform: uppercase;
+  margin-bottom: 32px; animation: fade-up 0.8s ease both;
+}
+.hero-badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--p); animation: blink 2s ease-in-out infinite; }
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 700; line-height: 1.0; letter-spacing: -0.03em;
+  margin-bottom: 24px; animation: fade-up 0.8s 0.1s ease both;
+}
+.hero h1 span {
+  background: linear-gradient(135deg, var(--p) 0%, var(--a) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero-sub {
+  font-size: clamp(16px, 2vw, 20px); color: var(--t2); max-width: 620px;
+  line-height: 1.7; margin-bottom: 48px; animation: fade-up 0.8s 0.2s ease both;
+}
+.hero-ctas {
+  display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;
+  margin-bottom: 64px; animation: fade-up 0.8s 0.3s ease both;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 14px;
+  background: linear-gradient(135deg, var(--p) 0%, rgba(0,229,204,0.7) 100%);
+  color: #fff; font-size: 15px; font-weight: 600;
+  text-decoration: none; border: none; cursor: pointer;
+  box-shadow: 0 8px 32px rgba(124,58,237,0.45), 0 0 0 1px rgba(124,58,237,0.2);
+  transition: all 0.3s cubic-bezier(.34,1.56,.64,1);
+  position: relative; overflow: hidden;
+}
+.btn-primary::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0), rgba(255,255,255,0.15));
+  opacity: 0; transition: opacity 0.3s;
+}
+.btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 16px 48px rgba(124,58,237,0.6); }
+.btn-primary:hover::after { opacity: 1; }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px; border-radius: 14px;
+  background: var(--bg3); color: var(--t1);
+  font-size: 15px; font-weight: 600;
+  text-decoration: none; border: 1px solid var(--b2); cursor: pointer;
+  transition: all 0.25s;
+}
+.btn-secondary:hover { background: var(--bg2); border-color: var(--b3); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex; gap: 48px; justify-content: center; flex-wrap: wrap;
+  animation: fade-up 0.8s 0.4s ease both;
+}
+.stat { text-align: center; }
+.stat-num {
+  font-family: var(--font-display); font-size: 32px; font-weight: 700;
+  background: linear-gradient(135deg, var(--p), var(--a));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-lbl { font-size: 12px; color: var(--t3); font-weight: 500; text-transform: uppercase; letter-spacing: 0.8px; margin-top: 2px; }
+
+@keyframes fade-up { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+.scroll-hint {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--t3); font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
+  animation: fade-up 1s 0.8s ease both;
+}
+.scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, transparent, var(--p)); animation: scroll-pulse 2s ease-in-out infinite; }
+@keyframes scroll-pulse { 0%,100%{opacity:0.3;transform:scaleY(0.7)} 50%{opacity:1;transform:scaleY(1)} }
+
+/* ── SECTIONS ── */
+section { padding: 100px 0; position: relative; z-index: 1; }
+.section-label {
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 2px; color: var(--p); margin-bottom: 16px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-label::before {
+  content: ''; width: 20px; height: 2px;
+  background: linear-gradient(to right, var(--p), var(--a));
+  border-radius: 1px;
+}
+h2.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 54px);
+  font-weight: 700; letter-spacing: -0.02em;
+  line-height: 1.1; margin-bottom: 20px;
+}
+.section-desc { font-size: 17px; color: var(--t2); max-width: 560px; line-height: 1.7; margin-bottom: 60px; }
+
+/* ── FEATURES GRID ── */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+.feature-card {
+  background: var(--bg2); border: 1px solid var(--b1);
+  border-radius: 20px; padding: 32px;
+  position: relative; overflow: hidden;
+  transition: all 0.4s cubic-bezier(.34,1.56,.64,1); cursor: default;
+}
+.feature-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at var(--mx,50%) var(--my,50%), rgba(124,58,237,0.08) 0%, transparent 60%);
+  opacity: 0; transition: opacity 0.3s;
+}
+.feature-card:hover { border-color: rgba(124,58,237,0.25); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+.feature-card:hover::before { opacity: 1; }
+.feature-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(0,229,204,0.1));
+  border: 1px solid rgba(124,58,237,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px; margin-bottom: 20px;
+}
+.feature-card h3 { font-family: var(--font-display); font-size: 20px; font-weight: 600; margin-bottom: 10px; }
+.feature-card p { font-size: 14px; color: var(--t2); line-height: 1.7; }
+.feature-tag {
+  display: inline-block; margin-top: 16px;
+  padding: 4px 10px; border-radius: 6px; font-size: 11px; font-weight: 600;
+  background: rgba(124,58,237,0.1); color: var(--p);
+  border: 1px solid rgba(124,58,237,0.2);
+}
+
+/* ── CODE BLOCK ── */
+.code-block { background: var(--bg); border: 1px solid var(--b2); border-radius: 16px; overflow: hidden; position: relative; }
+.code-header { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: var(--bg2); border-bottom: 1px solid var(--b1); }
+.code-dots { display: flex; gap: 6px; }
+.code-dot { width: 10px; height: 10px; border-radius: 50%; }
+.code-dot:nth-child(1) { background: #ff5f57; }
+.code-dot:nth-child(2) { background: #febc2e; }
+.code-dot:nth-child(3) { background: #28c840; }
+.code-filename { font-size: 12px; color: var(--t3); margin-left: 8px; font-family: var(--font-mono); }
+.code-body { padding: 24px; font-family: var(--font-mono); font-size: 13px; line-height: 1.8; overflow-x: auto; }
+.code-body .tag { color: #f472b6; }
+.code-body .attr { color: #a78bfa; }
+.code-body .val { color: #34d399; }
+.code-body .cmt { color: var(--t3); font-style: italic; }
+.code-body .fn { color: #60a5fa; }
+.code-body .str { color: #fbbf24; }
+.code-body .kw { color: #f472b6; }
+
+.copy-btn {
+  position: absolute; top: 12px; right: 12px;
+  background: var(--bg3); border: 1px solid var(--b2);
+  border-radius: 8px; padding: 6px 12px;
+  font-size: 11px; font-weight: 600; color: var(--t2);
+  cursor: pointer; transition: all 0.2s; font-family: var(--font-body);
+  display: flex; align-items: center; gap: 5px;
+}
+.copy-btn:hover { background: rgba(124,58,237,0.15); color: var(--p); border-color: rgba(124,58,237,0.3); }
+.copy-btn svg { width: 12px; height: 12px; }
+
+/* ── PROVIDERS ── */
+.providers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 40px; }
+.provider-card { background: var(--bg2); border: 1px solid var(--b1); border-radius: 16px; padding: 24px; transition: all 0.3s; text-align: center; }
+.provider-card:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-3px); }
+.provider-logo { font-size: 32px; margin-bottom: 10px; }
+.provider-name { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+.provider-desc { font-size: 12px; color: var(--t2); }
+.provider-badges { display: flex; gap: 6px; justify-content: center; margin-top: 12px; flex-wrap: wrap; }
+.badge { padding: 3px 10px; border-radius: 6px; font-size: 10px; font-weight: 600; }
+.badge-free { background: rgba(34,197,94,0.1); color: #22c55e; border: 1px solid rgba(34,197,94,0.2); }
+.badge-fast { background: rgba(0,229,204,0.1); color: var(--a); border: 1px solid rgba(0,229,204,0.2); }
+.badge-smart { background: rgba(124,58,237,0.1); color: var(--p); border: 1px solid rgba(124,58,237,0.2); }
+
+/* ── FALLBACK FLOW ── */
+.flow-viz {
+  display: flex; align-items: center; gap: 0;
+  background: var(--bg2); border: 1px solid var(--b1);
+  border-radius: 20px; padding: 32px; overflow-x: auto;
+}
+.flow-step { flex: 1; min-width: 140px; text-align: center; padding: 0 16px; position: relative; }
+.flow-step:not(:last-child)::after { content: '→'; position: absolute; right: -10px; top: 50%; transform: translateY(-50%); color: var(--t3); font-size: 20px; }
+.flow-icon {
+  width: 48px; height: 48px; border-radius: 12px; margin: 0 auto 10px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(0,229,204,0.08));
+  border: 1px solid rgba(124,58,237,0.2);
+  display: flex; align-items: center; justify-content: center; font-size: 22px;
+}
+.flow-step h4 { font-size: 13px; font-weight: 600; margin-bottom: 4px; }
+.flow-step p { font-size: 11px; color: var(--t2); }
+.flow-step.offline .flow-icon { background: rgba(245,158,11,0.1); border-color: rgba(245,158,11,0.2); }
+
+/* ── OPTIONS TABLE ── */
+.options-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 13px; }
+.options-table th {
+  text-align: left; padding: 12px 16px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--t3); background: var(--bg2); border-bottom: 1px solid var(--b1);
+}
+.options-table th:first-child { border-radius: 12px 0 0 0; }
+.options-table th:last-child { border-radius: 0 12px 0 0; }
+.options-table td { padding: 10px 16px; border-bottom: 1px solid var(--b1); vertical-align: middle; }
+.options-table tr:last-child td { border-bottom: none; }
+.options-table tr:hover td { background: rgba(124,58,237,0.04); }
+.options-table td:first-child { font-family: var(--font-mono); font-size: 12px; color: var(--a); }
+.options-table td:nth-child(2) { color: var(--p); }
+.options-table td:nth-child(3) { font-family: var(--font-mono); font-size: 11px; color: var(--t3); }
+.table-wrap { background: var(--bg2); border: 1px solid var(--b1); border-radius: 16px; overflow: hidden; }
+
+/* ── API CARDS ── */
+.api-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.api-card { background: var(--bg2); border: 1px solid var(--b1); border-radius: 14px; padding: 20px; transition: all 0.25s; }
+.api-card:hover { border-color: rgba(124,58,237,0.25); transform: translateY(-2px); }
+.api-method { font-family: var(--font-mono); font-size: 13px; color: var(--a); margin-bottom: 6px; font-weight: 600; }
+.api-desc { font-size: 12px; color: var(--t2); }
+
+/* ── STEPS ── */
+.steps { counter-reset: step; }
+.step {
+  display: flex; gap: 24px; margin-bottom: 40px;
+  padding: 28px; background: var(--bg2);
+  border: 1px solid var(--b1); border-radius: 20px;
+  transition: all 0.3s; position: relative; overflow: hidden;
+  counter-increment: step;
+}
+.step::before {
+  content: counter(step, decimal-leading-zero);
+  position: absolute; top: 20px; right: 24px;
+  font-family: var(--font-display); font-size: 48px; font-weight: 700;
+  color: rgba(124,58,237,0.06); line-height: 1;
+}
+.step:hover { border-color: rgba(124,58,237,0.2); }
+.step-icon {
+  width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(124,58,237,0.2), rgba(0,229,204,0.1));
+  border: 1px solid rgba(124,58,237,0.3);
+  display: flex; align-items: center; justify-content: center; font-size: 24px;
+}
+.step h4 { font-family: var(--font-display); font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+.step p { font-size: 14px; color: var(--t2); line-height: 1.7; }
+
+/* ── INSTALL TABS ── */
+.install-block { background: var(--bg2); border: 1px solid var(--b2); border-radius: 20px; overflow: hidden; }
+.install-tabs { display: flex; border-bottom: 1px solid var(--b1); background: var(--bg); }
+.install-tab {
+  padding: 14px 24px; font-size: 13px; font-weight: 600; color: var(--t3);
+  cursor: pointer; border: none; background: none;
+  transition: all 0.2s; font-family: var(--font-body);
+  border-bottom: 2px solid transparent;
+}
+.install-tab.active { color: var(--p); border-bottom-color: var(--p); }
+.install-content { display: none; }
+.install-content.active { display: block; }
+
+/* ── USE CASES ── */
+.usecases-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 14px; }
+.usecase-card {
+  background: var(--bg2); border: 1px solid var(--b1);
+  border-radius: 16px; padding: 24px 20px;
+  text-align: center; transition: all 0.3s;
+}
+.usecase-card:hover { border-color: rgba(124,58,237,0.3); transform: translateY(-3px); box-shadow: 0 12px 36px rgba(0,0,0,0.3); }
+.usecase-icon { font-size: 28px; margin-bottom: 10px; display: block; }
+.usecase-card h4 { font-family: var(--font-display); font-size: 15px; font-weight: 600; margin-bottom: 6px; }
+.usecase-card p { font-size: 12px; color: var(--t2); line-height: 1.6; }
+
+/* ── FAQ ACCORDION ── */
+.faq-list { display: flex; flex-direction: column; gap: 12px; max-width: 820px; }
+.faq-item {
+  background: var(--bg2); border: 1px solid var(--b1);
+  border-radius: 16px; overflow: hidden;
+  transition: all 0.3s;
+}
+.faq-item.active { border-color: rgba(124,58,237,0.35); box-shadow: 0 8px 32px rgba(0,0,0,0.2); }
+.faq-question {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 24px; cursor: pointer;
+  font-weight: 600; font-size: 16px;
+  transition: color 0.2s; gap: 16px;
+  user-select: none;
+}
+.faq-question:hover { color: var(--a); }
+.faq-question:focus-visible { outline: 2px solid var(--p); outline-offset: -2px; border-radius: 16px; }
+.faq-q-text { flex: 1; }
+.faq-icon {
+  width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+  background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.35s cubic-bezier(.34,1.56,.64,1);
+  font-size: 18px; color: var(--p); font-weight: 300; line-height: 1;
+}
+.faq-item.active .faq-icon { transform: rotate(45deg); background: rgba(124,58,237,0.2); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.45s cubic-bezier(.22,1,.36,1); }
+.faq-answer-inner {
+  padding: 0 24px 22px;
+  font-size: 14px; color: var(--t2); line-height: 1.85;
+}
+.faq-answer-inner a { color: var(--a); text-decoration: none; border-bottom: 1px solid rgba(0,229,204,0.3); transition: border-color 0.2s; }
+.faq-answer-inner a:hover { border-color: var(--a); }
+
+/* ── GLOW LINE ── */
+.glow-line { height: 1px; background: linear-gradient(to right, transparent, var(--p), var(--a), transparent); margin: 0; opacity: 0.4; }
+
+/* ── SHIMMER DIVIDER ── */
+.shimmer-divider { height: 1px; position: relative; overflow: hidden; margin: 0; }
+.shimmer-divider::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, var(--p) 30%, var(--a) 50%, var(--p) 70%, transparent 100%);
+  animation: shimmer-slide 3s linear infinite; opacity: 0.5;
+}
+@keyframes shimmer-slide { from{transform:translateX(-100%)} to{transform:translateX(100%)} }
+
+/* ── AUTHOR ── */
+.author-card {
+  background: var(--bg2); border: 1px solid var(--b2);
+  border-radius: 24px; padding: 48px;
+  display: flex; gap: 40px; align-items: center;
+  position: relative; overflow: hidden;
+}
+.author-card::before {
+  content: ''; position: absolute; top: -100px; right: -100px;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(124,58,237,0.08), transparent 70%);
+}
+.author-avatar-wrap { flex-shrink: 0; }
+.author-avatar-img {
+  width: 120px; height: 120px; border-radius: 50%;
+  object-fit: cover; display: block;
+  border: 3px solid rgba(124,58,237,0.5);
+  box-shadow: 0 16px 40px rgba(124,58,237,0.4);
+}
+.author-info { position: relative; z-index: 1; }
+.author-info h3 { font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 6px; }
+.author-info p { color: var(--t2); font-size: 15px; margin-bottom: 20px; line-height: 1.6; }
+.author-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.author-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 9px 18px; border-radius: 10px;
+  font-size: 13px; font-weight: 600; text-decoration: none;
+  border: 1px solid var(--b2); color: var(--t2);
+  background: var(--bg3); transition: all 0.25s;
+}
+.author-link:hover { color: var(--t1); border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.1); }
+.author-link.primary { background: linear-gradient(135deg, var(--p), rgba(0,229,204,0.7)); color: #fff; border-color: transparent; }
+.author-link.primary:hover { box-shadow: 0 8px 24px rgba(124,58,237,0.5); transform: translateY(-2px); }
+.author-link svg { width: 14px; height: 14px; }
+
+/* ── CTA ── */
+.cta-section { text-align: center; padding: 120px 0; position: relative; overflow: hidden; }
+.cta-section::before {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px; height: 400px;
+  background: radial-gradient(ellipse, rgba(124,58,237,0.15), transparent 70%);
+  pointer-events: none;
+}
+.cta-section h2 { font-family: var(--font-display); font-size: clamp(36px, 6vw, 64px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 20px; }
+.cta-section p { color: var(--t2); font-size: 18px; margin-bottom: 48px; }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--b1);
+  padding: 40px 0; text-align: center;
+  color: var(--t3); font-size: 13px;
+  position: relative; z-index: 1;
+}
+footer a { color: var(--t2); text-decoration: none; transition: color 0.2s; }
+footer a:hover { color: var(--p); }
+.footer-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 12px; flex-wrap: wrap; }
+
+/* ── CHAT PREVIEW ── */
+.chat-preview {
+  background: var(--bg3); border: 1px solid var(--b2);
+  border-radius: 20px; overflow: hidden;
+  max-width: 360px; margin: 0 auto;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+}
+.chat-preview-hdr {
+  background: linear-gradient(135deg, var(--p), var(--a));
+  padding: 14px 18px; display: flex; align-items: center; gap: 10px;
+}
+.cp-av { width: 34px; height: 34px; border-radius: 10px; background: rgba(255,255,255,0.2); display: flex; align-items: center; justify-content: center; font-size: 16px; }
+.cp-name { font-size: 14px; font-weight: 700; color: #fff; }
+.cp-status { font-size: 11px; color: rgba(255,255,255,0.75); }
+.cp-dot { width: 5px; height: 5px; background: #22c55e; border-radius: 50%; display: inline-block; margin-right: 4px; }
+.chat-msgs { padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+.chat-msg { display: flex; gap: 8px; align-items: flex-end; }
+.chat-msg.u { flex-direction: row-reverse; }
+.chat-bbl { padding: 10px 14px; border-radius: 14px; font-size: 12px; line-height: 1.5; max-width: 75%; }
+.chat-bbl.b { background: var(--bg2); color: var(--t1); border-bottom-left-radius: 4px; }
+.chat-bbl.u { background: linear-gradient(135deg, var(--p), rgba(0,229,204,0.7)); color: #fff; border-bottom-right-radius: 4px; }
+.chat-av-mini { width: 24px; height: 24px; border-radius: 7px; background: linear-gradient(135deg, var(--p), var(--a)); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+.typing-dots { display: flex; gap: 3px; padding: 2px 0; }
+.typing-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(124,58,237,0.5); animation: bounce 1.4s ease-in-out infinite; }
+.typing-dot:nth-child(2) { animation-delay: 0.18s; }
+.typing-dot:nth-child(3) { animation-delay: 0.36s; }
+@keyframes bounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-5px)} }
+
+.msg-animate { opacity: 0; transform: translateY(10px); animation: msg-in 0.4s ease forwards; }
+.msg-animate:nth-child(1) { animation-delay: 0.3s; }
+.msg-animate:nth-child(2) { animation-delay: 0.7s; }
+.msg-animate:nth-child(3) { animation-delay: 1.1s; }
+.msg-animate:nth-child(4) { animation-delay: 1.5s; }
+@keyframes msg-in { to { opacity:1; transform:translateY(0); } }
+
+.floating-badge {
+  position: absolute;
+  background: var(--bg2); border: 1px solid var(--b2);
+  border-radius: 14px; padding: 12px 18px;
+  font-size: 12px; font-weight: 600; color: var(--t1);
+  display: flex; align-items: center; gap: 8px;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5); white-space: nowrap;
+}
+.floating-badge svg { width: 16px; height: 16px; }
+.fb-green { color: #22c55e; }
+.fb-purple { color: var(--p); }
+
+.reveal { opacity: 0; transform: translateY(32px); transition: all 0.7s cubic-bezier(.22,1,.36,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+.g-text { background: linear-gradient(135deg, var(--p), var(--a)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+@media (max-width: 768px) {
+  nav .nav-links a:not(.nav-cta) { display: none; }
+  .author-card { flex-direction: column; text-align: center; padding: 32px; }
+  .author-links { justify-content: center; }
+  .flow-viz { flex-direction: column; }
+  .flow-step:not(:last-child)::after { content: '↓'; position: static; display: block; margin: 8px auto; }
+  .hero-stats { gap: 28px; }
+  .usecases-grid { grid-template-columns: repeat(2, 1fr); }
+  .faq-question { font-size: 14px; padding: 16px 18px; }
+  .faq-answer-inner { padding: 0 18px 18px; font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .usecases-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="bg-orbs" aria-hidden="true">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+</div>
+<div class="grid-bg" aria-hidden="true"></div>
+
+<!-- ═══════ NAV ═══════ -->
+<nav id="nav" aria-label="Main Navigation">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo" aria-label="WebChat.js Home">
+      <div class="nav-logo-icon" aria-hidden="true">🤖</div>
+      WebChat<span style="color:var(--a)">.</span>js
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#providers">Providers</a>
+      <a href="#install">Install</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://github.com/DEV-NKP/WebChat" target="_blank" rel="noopener noreferrer" class="nav-cta">GitHub →</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" aria-label="Hero">
+  <div class="container">
+    <div class="hero-badge">
+      <div class="hero-badge-dot" aria-hidden="true"></div>
+      Production Ready · v1.0.0
+    </div>
+    <h1>Your website,<br><span>now talks back.</span></h1>
+    <p class="hero-sub">
+      Drop in one script tag. WebChat.js reads your entire site, understands context, and gives visitors instant AI-powered answers — no backend, zero dependencies, no fuss.
+    </p>
+    <div class="hero-ctas">
+      <a href="#install" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Get Started Free
+      </a>
+      <a href="https://github.com/DEV-NKP/WebChat" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        View Source
+      </a>
+    </div>
+
+    <div style="position:relative; display:flex; justify-content:center; margin-bottom:60px;">
+      <div class="chat-preview" role="img" aria-label="WebChat.js widget preview showing a sample conversation">
+        <div class="chat-preview-hdr">
+          <div class="cp-av" aria-hidden="true">🤖</div>
+          <div>
+            <div class="cp-name">Site Assistant</div>
+            <div class="cp-status"><span class="cp-dot" aria-hidden="true"></span>Online · Ready</div>
+          </div>
+        </div>
+        <div class="chat-msgs">
+          <div class="chat-msg msg-animate">
+            <div class="chat-av-mini" aria-hidden="true">🤖</div>
+            <div class="chat-bbl b">Hi! I've read through your site. Ask me anything 👋</div>
+          </div>
+          <div class="chat-msg u msg-animate">
+            <div class="chat-bbl u">What services do you offer?</div>
+          </div>
+          <div class="chat-msg msg-animate">
+            <div class="chat-av-mini" aria-hidden="true">🤖</div>
+            <div class="chat-bbl b">
+              <div class="typing-dots" id="typing" aria-label="AI is typing"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>
+            </div>
+          </div>
+          <div class="chat-msg msg-animate" id="final-msg" style="display:none">
+            <div class="chat-av-mini" aria-hidden="true">🤖</div>
+            <div class="chat-bbl b">We offer <strong>web development</strong>, <strong>AI integration</strong>, and <strong>consulting services</strong>. Want me to elaborate on any of these? ✨</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="floating-badge" style="top: 20px; right: -20px; animation: float1 4s ease-in-out infinite; display:none;" id="badge1">
+        <svg class="fb-green" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+        AI response in 340ms
+      </div>
+      <div class="floating-badge" style="bottom: 30px; right: -30px; animation: float2 4s ease-in-out infinite 1s; display:none;" id="badge2">
+        <svg class="fb-purple" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Scraped 8 pages
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">AI Providers</div></div>
+      <div class="stat"><div class="stat-num">0</div><div class="stat-lbl">Dependencies</div></div>
+      <div class="stat"><div class="stat-num">~70KB</div><div class="stat-lbl">Minified</div></div>
+      <div class="stat"><div class="stat-num">MIT</div><div class="stat-lbl">License</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint" aria-hidden="true"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="shimmer-divider" aria-hidden="true"></div>
+
+<!-- ═══════ FEATURES ═══════ -->
+<section id="features" aria-labelledby="features-title">
+  <div class="container">
+    <div class="section-label">Features</div>
+    <h2 class="section-title reveal" id="features-title">Everything you need,<br>nothing you don't.</h2>
+    <p class="section-desc reveal reveal-delay-1">Production-ready from day one. WebChat.js handles the hard parts so you can focus on your site.</p>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">⚡</div>
+        <h3>Zero-Impact Lazy Load</h3>
+        <p>Guarantees 100/100 Core Web Vitals. The full UI and site scraping are deferred until the user interacts, ensuring your page load speed is never compromised.</p>
+        <span class="feature-tag">Core Web Vitals Safe</span>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon" aria-hidden="true">🕷️</div>
+        <h3>Auto Web Scraping</h3>
+        <p>On demand, WebChat silently reads your current page and all linked internal pages — building a rich knowledge base in seconds.</p>
+        <span class="feature-tag">Up to 10 pages</span>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon" aria-hidden="true">🌐</div>
+        <h3>Smart Offline Fallback</h3>
+        <p>When all API providers fail, a local NLP engine answers from scraped content. Your bot never goes dark, regardless of API status.</p>
+        <span class="feature-tag">Always available</span>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">🧠</div>
+        <h3>Sentiment Detection</h3>
+        <p>Detects frustrated, urgent, or happy users and adjusts tone automatically. Empathy built directly into the logic.</p>
+        <span class="feature-tag">Realtime NLP</span>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon" aria-hidden="true">💡</div>
+        <h3>Dynamic Suggestions</h3>
+        <p>Context-aware quick-reply chips generated from your actual site content — nav items, section headings, and FAQs.</p>
+        <span class="feature-tag">Auto-generated</span>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon" aria-hidden="true">🎨</div>
+        <h3>Fully Customizable</h3>
+        <p>Colors, fonts, position, bot name, avatar. Dark/light/auto theme. Glassmorphism UI with smooth spring animations.</p>
+        <span class="feature-tag">40+ options</span>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">📱</div>
+        <h3>Mobile First</h3>
+        <p>Full-screen takeover on mobile with smooth slide-up animation. Touch-optimized, accessible, and fully responsive.</p>
+        <span class="feature-tag">100% responsive</span>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon" aria-hidden="true">🔔</div>
+        <h3>Smart Popups</h3>
+        <p>Contextual engagement popups built from your scraped content. Stops automatically when the chat window is opened.</p>
+        <span class="feature-tag">Content-aware</span>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon" aria-hidden="true">📤</div>
+        <h3>Export & Search</h3>
+        <p>In-chat search, conversation export as JSON, reaction buttons (👍/👎), copy-to-clipboard, and read receipts.</p>
+        <span class="feature-tag">Power user features</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="shimmer-divider" aria-hidden="true"></div>
+
+<!-- ═══════ PROVIDERS ═══════ -->
+<section id="providers" aria-labelledby="providers-title">
+  <div class="container">
+    <div class="section-label">AI Providers</div>
+    <h2 class="section-title reveal" id="providers-title">Three providers.<br>One bulletproof bot.</h2>
+    <p class="section-desc reveal reveal-delay-1">WebChat tries each provider in order and falls back automatically. You only need one free API key to get started.</p>
+    <div class="providers-grid reveal">
+      <div class="provider-card">
+        <div class="provider-logo" aria-hidden="true">🔷</div>
+        <div class="provider-name">DeepSeek</div>
+        <div class="provider-desc">Priority 1 · Premium quality</div>
+        <div class="provider-badges"><span class="badge badge-smart">Highest Quality</span><span class="badge badge-fast">⚡⚡⚡</span></div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-logo" aria-hidden="true">🟢</div>
+        <div class="provider-name">Groq</div>
+        <div class="provider-desc">Priority 2 · Ultra-fast Llama</div>
+        <div class="provider-badges"><span class="badge badge-free">Free Tier</span><span class="badge badge-fast">⚡⚡⚡⚡</span></div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-logo" aria-hidden="true">🔵</div>
+        <div class="provider-name">GLM-4</div>
+        <div class="provider-desc">Priority 3 · BigModel.cn</div>
+        <div class="provider-badges"><span class="badge badge-free">Free Tier</span><span class="badge badge-fast">⚡⚡</span></div>
+      </div>
+      <div class="provider-card">
+        <div class="provider-logo" aria-hidden="true">🌐</div>
+        <div class="provider-name">Local Fallback</div>
+        <div class="provider-desc">Always available · No API key</div>
+        <div class="provider-badges"><span class="badge badge-free">Zero Cost</span><span class="badge badge-smart">Always On</span></div>
+      </div>
+    </div>
+    <div class="flow-viz reveal reveal-delay-1" aria-label="AI Provider Fallback Flow">
+      <div class="flow-step"><div class="flow-icon" aria-hidden="true">💬</div><h4>User Message</h4><p>Sentiment detected</p></div>
+      <div class="flow-step"><div class="flow-icon" aria-hidden="true">🔷</div><h4>Try DeepSeek</h4><p>If key present</p></div>
+      <div class="flow-step"><div class="flow-icon" aria-hidden="true">🟢</div><h4>Try Groq</h4><p>On DS failure</p></div>
+      <div class="flow-step"><div class="flow-icon" aria-hidden="true">🔵</div><h4>Try GLM-4</h4><p>On Groq failure</p></div>
+      <div class="flow-step offline"><div class="flow-icon" aria-hidden="true">🌐</div><h4>Local Fallback</h4><p>Always responds</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="shimmer-divider" aria-hidden="true"></div>
+
+<!-- ═══════ INSTALL ═══════ -->
+<section id="install" aria-labelledby="install-title">
+  <div class="container">
+    <div class="section-label">Installation</div>
+    <h2 class="section-title reveal" id="install-title">One line.<br>Infinite conversations.</h2>
+    <p class="section-desc reveal reveal-delay-1">Two ways to add WebChat.js to any website. Pick the one that fits your workflow. Lazy loading is enabled by default.</p>
+    <div class="install-block reveal">
+      <div class="install-tabs" role="tablist">
+        <button class="install-tab active" onclick="switchTab(this, 'script')" role="tab" aria-selected="true">Script Tag</button>
+        <button class="install-tab" onclick="switchTab(this, 'programmatic')" role="tab" aria-selected="false">Programmatic</button>
+        <button class="install-tab" onclick="switchTab(this, 'dynamic')" role="tab" aria-selected="false">Dynamic Load</button>
+      </div>
+      <div class="install-content active" id="tab-script" role="tabpanel">
+        <div style="position:relative;">
+          <button class="copy-btn" onclick="copyCode('code-script')" aria-label="Copy code to clipboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy
+          </button>
+          <div class="code-body" id="code-script"><pre><span class="cmt">&lt;!-- Add before &lt;/body&gt; on any page --&gt;</span>
+<span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="val">"https://webchat-js.pages.dev/webchat.min.js"</span>
+  <span class="attr">data-webchat</span>
+  <span class="attr">data-deepseek-key</span>=<span class="val">"sk-YOUR_DEEPSEEK_KEY"</span>
+  <span class="attr">data-groq-key</span>=<span class="val">"gsk_YOUR_GROQ_KEY"</span>
+  <span class="attr">data-glm-key</span>=<span class="val">"YOUR_GLM_KEY"</span>
+  <span class="attr">data-bot-name</span>=<span class="val">"My Assistant"</span>
+  <span class="attr">data-primary-color</span>=<span class="val">"#7c3aed"</span>
+  <span class="attr">data-accent-color</span>=<span class="val">"#00e5cc"</span>
+  <span class="attr">data-position</span>=<span class="val">"bottom-right"</span>
+  <span class="attr">data-theme</span>=<span class="val">"auto"</span>
+  <span class="attr">data-lazy-load</span>=<span class="val">"true"</span>
+  <span class="attr">data-lazy-scrape</span>=<span class="val">"true"</span>
+  <span class="attr">data-enable-popup</span>=<span class="val">"true"</span><span class="tag">&gt;&lt;/script&gt;</span></pre></div>
+        </div>
+      </div>
+      <div class="install-content" id="tab-programmatic" role="tabpanel">
+        <div style="position:relative;">
+          <button class="copy-btn" onclick="copyCode('code-prog')" aria-label="Copy code to clipboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy
+          </button>
+          <div class="code-body" id="code-prog"><pre><span class="tag">&lt;script <span class="attr">src</span>=<span class="val">"https://webchat-js.pages.dev/webchat.min.js"</span>&gt;&lt;/script&gt;</span>
+<span class="tag">&lt;script&gt;</span>
+<span class="kw">const</span> chat = <span class="kw">new</span> <span class="fn">WebChat</span>({
+  deepseekApiKey: <span class="str">'sk-xxx'</span>,
+  groqApiKey:     <span class="str">'gsk_xxx'</span>,
+  glmApiKey:      <span class="str">'xxx'</span>,
+  botName:        <span class="str">'Maya'</span>,
+  primaryColor:   <span class="str">'#7c3aed'</span>,
+  accentColor:    <span class="str">'#00e5cc'</span>,
+  position:       <span class="str">'bottom-right'</span>,
+  theme:          <span class="str">'auto'</span>,
+  lazyLoad:       <span class="kw">true</span>,
+  lazyScrape:     <span class="kw">true</span>,
+  enablePopup:    <span class="kw">true</span>,
+  showBranding:   <span class="kw">true</span>,
+});
+<span class="tag">&lt;/script&gt;</span></pre></div>
+        </div>
+      </div>
+      <div class="install-content" id="tab-dynamic" role="tabpanel">
+        <div style="position:relative;">
+          <button class="copy-btn" onclick="copyCode('code-dyn')" aria-label="Copy code to clipboard">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+            Copy
+          </button>
+          <div class="code-body" id="code-dyn"><pre><span class="tag">&lt;script&gt;</span>
+<span class="cmt">// Split keys for basic obfuscation (optional)</span>
+<span class="kw">const</span> deepseekKey = [<span class="str">"sk-3bc63d61"</span>, <span class="str">"ce4c4ed58e..."</span>].join(<span class="str">""</span>);
+<span class="kw">const</span> groqKey = [<span class="str">"gsk_zBkt6wNn2nZ"</span>, <span class="str">"ClCfP5WY9..."</span>].join(<span class="str">""</span>);
+
+<span class="cmt">// Inject script dynamically with lazy load enabled</span>
+<span class="kw">const</span> s = document.<span class="fn">createElement</span>(<span class="str">"script"</span>);
+s.src = <span class="str">"https://webchat-js.pages.dev/webchat.min.js"</span>;
+s.<span class="fn">setAttribute</span>(<span class="str">"data-webchat"</span>, <span class="str">""</span>);
+s.<span class="fn">setAttribute</span>(<span class="str">"data-deepseek-key"</span>, deepseekKey);
+s.<span class="fn">setAttribute</span>(<span class="str">"data-groq-key"</span>, groqKey);
+s.<span class="fn">setAttribute</span>(<span class="str">"data-bot-name"</span>, <span class="str">"Maya"</span>);
+s.<span class="fn">setAttribute</span>(<span class="str">"data-lazy-load"</span>, <span class="str">"true"</span>);
+s.<span class="fn">setAttribute</span>(<span class="str">"data-enable-popup"</span>, <span class="str">"true"</span>);
+document.body.<span class="fn">appendChild</span>(s);
+<span class="tag">&lt;/script&gt;</span></pre></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top: 60px;">
+      <h3 class="reveal" style="font-family: var(--font-display); font-size: 28px; font-weight: 700; margin-bottom: 24px;">Configuration Options</h3>
+      <div class="table-wrap reveal reveal-delay-1">
+        <table class="options-table">
+          <thead>
+            <tr><th>Attribute</th><th>Type</th><th>Default</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>data-deepseek-key</td><td>string</td><td>''</td><td>DeepSeek API key (priority 1)</td></tr>
+            <tr><td>data-groq-key</td><td>string</td><td>''</td><td>Groq API key (priority 2, free tier)</td></tr>
+            <tr><td>data-glm-key</td><td>string</td><td>''</td><td>GLM-4 API key (priority 3, free tier)</td></tr>
+            <tr><td>data-bot-name</td><td>string</td><td>'Site Assistant'</td><td>Chatbot display name in header</td></tr>
+            <tr><td>data-primary-color</td><td>color</td><td>'#7c3aed'</td><td>Main brand color (hex)</td></tr>
+            <tr><td>data-accent-color</td><td>color</td><td>'#00e5cc'</td><td>Gradient accent color (hex)</td></tr>
+            <tr><td>data-position</td><td>string</td><td>'bottom-right'</td><td>bottom-right | bottom-left | bottom-center</td></tr>
+            <tr><td>data-theme</td><td>string</td><td>'auto'</td><td>auto | light | dark</td></tr>
+            <tr><td>data-lazy-load</td><td>boolean</td><td>true</td><td>Defer UI init until interaction</td></tr>
+            <tr><td>data-lazy-scrape</td><td>boolean</td><td>true</td><td>Defer site scraping until chat opens</td></tr>
+            <tr><td>data-init-delay</td><td>number</td><td>2000</td><td>Lazy init fallback timeout (ms)</td></tr>
+            <tr><td>data-scrape-delay</td><td>number</td><td>500</td><td>Delay before scraping on open (ms)</td></tr>
+            <tr><td>data-enable-popup</td><td>boolean</td><td>true</td><td>Show contextual engagement popups</td></tr>
+            <tr><td>data-popup-interval</td><td>number</td><td>3000</td><td>Milliseconds between popups</td></tr>
+            <tr><td>data-max-popups</td><td>number</td><td>5</td><td>Max popups per session</td></tr>
+            <tr><td>data-bot-avatar</td><td>url</td><td>null</td><td>Custom avatar image URL</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="shimmer-divider" aria-hidden="true"></div>
+
+<!-- ═══════ HOW IT WORKS ═══════ -->
+<section id="how" aria-labelledby="how-title">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2 class="section-title reveal" id="how-title">Five steps to<br>smart conversations.</h2>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-icon" aria-hidden="true">🚀</div>
+        <div><h4>Lazy Initialization</h4><p>Script loads with zero performance impact. Only the toggle button renders initially. The full UI and scraping are deferred until the user interacts or a short timeout passes.</p></div>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-icon" aria-hidden="true">🕷️</div>
+        <div><h4>On-Demand Context Building</h4><p>When triggered, extracts headings, section text, FAQs, contact info, navigation links, and structured lists. Builds a ~12,000-character knowledge context.</p></div>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-icon" aria-hidden="true">💬</div>
+        <div><h4>User Interaction</h4><p>Message arrives → Sentiment detection (positive/negative/urgent/neutral) → Rate limit check → Context preparation with last N messages.</p></div>
+      </div>
+      <div class="step reveal">
+        <div class="step-icon" aria-hidden="true">🤖</div>
+        <div><h4>AI Response Pipeline</h4><p>Tries DeepSeek → Groq → GLM-4 in priority order. Each provider gets 2 retry strikes before being skipped. Smart Local Fallback always catches the ball.</p></div>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-icon" aria-hidden="true">✨</div>
+        <div><h4>Beautiful Delivery</h4><p>Typewriter animation renders the response. Suggestions refresh based on context. Read receipts, reactions, and copy button appear on hover.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="shimmer-divider" aria-hidden="true"></div>
+
+<!-- ═══════ USE CASES ═══════ -->
+<section id="use-cases" aria-labelledby="usecases-title">
+  <div class="container">
+    <div class="section-label">Use Cases</div>
+    <h2 class="section-title reveal" id="usecases-title">Built for every<br>kind of website.</h2>
+    <p class="section-desc reveal reveal-delay-1">Whether you're a solo developer or a growing business — WebChat.js adapts to your content and your audience.</p>
+    <div class="usecases-grid reveal">
+      <div class="usecase-card">
+        <span class="usecase-icon" aria-hidden="true">👤</span>
+        <h4>Personal Portfolio</h4>
+        <p>Let visitors ask about your skills, projects, and availability without reading every section.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="usecase-icon" aria-hidden="true">🚀</span>
+        <h4>SaaS Landing Pages</h4>
+        <p>Instantly answer pricing questions, feature comparisons, and integration queries from prospects.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="usecase-icon" aria-hidden="true">📖</span>
+        <h4>Documentation Sites</h4>
+        <p>Help developers find the right API endpoint, config option, or tutorial in seconds.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="usecase-icon" aria-hidden="true">🛒</span>
+        <h4>E-Commerce Stores</h4>
+        <p>Answer shipping, return policy, and product specification questions to reduce support tickets.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="usecase-icon" aria-hidden="true">✍️</span>
+        <h4>Blogs & Publications</h4>
+        <p>Guide readers to related articles, summarize long posts, and surface evergreen content.</p>
+      </div>
+      <div class="usecase-card">
+        <span class="usecase-icon" aria-hidden="true">🏢</span>
+        <h4>Agency & Business</h4>
+        <p>Qualify leads, answer service questions, and capture contact info — all automated, 24/7.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="shimmer-divider" aria-hidden="true"></div>
+
+<!-- ═══════ FAQ ═══════ -->
+<section id="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title reveal" id="faq-title">Frequently asked<br>questions.</h2>
+    <p class="section-desc reveal reveal-delay-1">Everything you need to know about WebChat.js. Can't find an answer? <a href="https://github.com/DEV-NKP/WebChat/issues" target="_blank" rel="noopener noreferrer" style="color:var(--a); text-decoration:none; border-bottom:1px solid rgba(0,229,204,0.3);">Open an issue on GitHub</a>.</p>
+
+    <div class="faq-list reveal" role="list">
+
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text">What is WebChat.js?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            WebChat.js is a free, open-source AI chatbot widget that you can embed on any website with a single script tag. It automatically reads your site's content, builds a knowledge base, and answers visitor questions using AI providers like <strong>DeepSeek</strong>, <strong>Groq</strong>, or <strong>GLM-4</strong> — all without requiring any backend server, database, or API gateway. Think of it as a ChatGPT that already knows everything about your website.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Is WebChat.js really free?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            Yes, WebChat.js is <strong>100% free and open-source</strong> under the MIT license. The widget itself has zero cost. The AI providers offer free tiers: <strong>Groq</strong> provides a generous free tier with no credit card required, <strong>GLM-4 (BigModel.cn)</strong> offers free API access, and <strong>DeepSeek</strong> has very affordable pricing starting at fractions of a cent per request. Even with <strong>no API key at all</strong>, the built-in local fallback engine answers questions from your scraped site content at absolutely zero cost.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How does WebChat.js work without a backend?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            WebChat.js runs <strong>entirely in the browser</strong>. When a user opens the chat for the first time, it fetches the current page and up to 10 internally linked pages using the Fetch API, extracting headings, paragraphs, FAQs, and navigation. This content is stored in the browser's memory and sent as context directly to AI provider APIs (DeepSeek, Groq, or GLM-4) from the client side. There is no intermediary server, no database, and no proxy — it's pure <strong>browser-to-API communication</strong>. If all APIs fail, a local keyword-matching engine answers from the scraped content.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Does WebChat.js slow down my website?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            <strong>No.</strong> WebChat.js uses a two-stage lazy loading strategy designed to guarantee <strong>zero impact on Core Web Vitals</strong>. On initial page load, only a small toggle button (under 2KB of rendered DOM) is added. The full chat UI, all CSS styles, and the site scraping process are deferred until the user actually clicks the button — or after a configurable safety timeout (default: 2 seconds). This means your <strong>Largest Contentful Paint (LCP)</strong>, <strong>First Input Delay (FID)</strong>, and <strong>Cumulative Layout Shift (CLS)</strong> scores remain completely unaffected.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Which AI providers does WebChat.js support?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            WebChat.js supports <strong>three cloud AI providers</strong> in automatic priority order:<br><br>
+            <strong>1. DeepSeek</strong> (Priority 1) — Highest response quality, best for nuanced answers.<br>
+            <strong>2. Groq</strong> (Priority 2) — Ultra-fast inference using Llama models, generous free tier.<br>
+            <strong>3. GLM-4</strong> (Priority 3) — BigModel.cn's model, free tier available.<br><br>
+            If all three fail or no API keys are configured, it automatically falls back to a <strong>built-in local NLP engine</strong> that answers from your scraped site content. Each provider gets 2 retry attempts before being skipped. The entire failover is invisible to the user.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Can I use WebChat.js with React, Vue, Next.js, or other frameworks?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            <strong>Absolutely.</strong> WebChat.js is framework-agnostic because it operates as a vanilla JavaScript widget that creates and manages its own isolated DOM subtree. It does not conflict with virtual DOM diffing in React, Vue, Svelte, or any other framework. It works seamlessly with <strong>React, Vue, Angular, Next.js, Nuxt, SvelteKit, Astro, Hugo, WordPress, Shopify, Webflow, Wix</strong>, and any other platform that renders HTML. For framework integration, you can use the <strong>programmatic API</strong> (<code>new WebChat({...})</code>) for lifecycle control, or the simple <strong>script tag</strong> approach for drop-in installation.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text">How many pages can WebChat.js scrape?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            WebChat.js scrapes the <strong>current page plus up to 10 internally linked pages</strong>, extracting approximately <strong>12,000 characters</strong> of structured context. This limit is carefully calibrated to provide comprehensive coverage of your site while staying within AI provider token limits (typically 4K-8K context windows for free tiers) and maintaining fast response times. Only pages from the <strong>same domain</strong> are scraped — external links are automatically filtered out for security and relevance.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" role="listitem">
+        <div class="faq-question" role="button" tabindex="0" aria-expanded="false" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Is WebChat.js GDPR and privacy compliant?</span>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </div>
+        <div class="faq-answer" role="region">
+          <div class="faq-answer-inner">
+            WebChat.js is designed with privacy as a priority. Conversations are stored <strong>only in the browser's sessionStorage</strong> and are never sent to any server other than the AI provider API you explicitly configure. There is <strong>no built-in analytics tracking, no cookies, and no third-party data sharing</strong>. However, since chat messages are transmitted to your chosen AI provider (DeepSeek, Groq, or BigModel.cn), you should review that provider's data processing terms and include appropriate disclosures in your site's privacy policy. For maximum privacy, you can run WebChat.js with <strong>no API keys</strong> — the local fallback processes everything 100% client-side with zero data leaving the browser.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="shimmer-divider" aria-hidden="true"></div>
+
+<!-- ═══════ JS API ═══════ -->
+<section id="api" aria-labelledby="api-title">
+  <div class="container">
+    <div class="section-label">JavaScript API</div>
+    <h2 class="section-title reveal" id="api-title">Full programmatic<br>control.</h2>
+    <p class="section-desc reveal reveal-delay-1">Access the WebChat instance anywhere to trigger actions, inspect state, or integrate with your app.</p>
+    <div class="api-grid reveal">
+      <div class="api-card"><div class="api-method">chat.open()</div><div class="api-desc">Opens the chat window with animation and focuses input.</div></div>
+      <div class="api-card"><div class="api-method">chat.close()</div><div class="api-desc">Closes the chat window and restarts popup manager.</div></div>
+      <div class="api-card"><div class="api-method">chat.toggle()</div><div class="api-desc">Toggles open/closed state of the chat window.</div></div>
+      <div class="api-card"><div class="api-method">chat.send(text)</div><div class="api-desc">Programmatically sends a message as the user.</div></div>
+      <div class="api-card"><div class="api-method">chat.getHistory()</div><div class="api-desc">Returns the full conversation history array.</div></div>
+      <div class="api-card"><div class="api-method">chat.getTokenUsage()</div><div class="api-desc">Returns prompt/completion/total token counts.</div></div>
+      <div class="api-card"><div class="api-method">chat.setTheme(t)</div><div class="api-desc">Dynamically switch between 'light' and 'dark' themes.</div></div>
+      <div class="api-card"><div class="api-method">chat.destroy()</div><div class="api-desc">Removes the widget and cleans up all styles and events.</div></div>
+      <div class="api-card"><div class="api-method">window._webChat</div><div class="api-desc">Global reference available after auto-init via data attributes.</div></div>
+    </div>
+    <div class="code-block reveal reveal-delay-1" style="margin-top: 32px;">
+      <div class="code-header">
+        <div class="code-dots" aria-hidden="true"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+        <span class="code-filename">usage-examples.js</span>
+      </div>
+      <div class="code-body"><pre><span class="cmt">// Open chat when user clicks a custom button</span>
+document.<span class="fn">getElementById</span>(<span class="str">'my-help-btn'</span>).addEventListener(<span class="str">'click'</span>, () => {
+  window._webChat.<span class="fn">open</span>();
+});
+
+<span class="cmt">// Pre-fill a message based on page context</span>
+<span class="kw">if</span> (location.pathname === <span class="str">'/pricing'</span>) {
+  setTimeout(() => window._webChat.<span class="fn">send</span>(<span class="str">'Tell me about pricing'</span>), 2000);
+}
+
+<span class="cmt">// Export conversation on page leave</span>
+window.addEventListener(<span class="str">'beforeunload'</span>, () => {
+  <span class="kw">const</span> history = window._webChat.<span class="fn">getHistory</span>();
+  console.<span class="fn">log</span>(<span class="str">'Session ended:'</span>, history.length, <span class="str">'messages'</span>);
+});</pre></div>
+    </div>
+  </div>
+</section>
+
+<div class="shimmer-divider" aria-hidden="true"></div>
+
+<!-- ═══════ AUTHOR ═══════ -->
+<section aria-labelledby="author-title">
+  <div class="container">
+    <div class="section-label">Author</div>
+    <div class="author-card reveal">
+      <div class="author-avatar-wrap">
+        <img src="assets/images/author-nkp.png" alt="Niloy Kanti Paul — Software Engineer and creator of WebChat.js" class="author-avatar-img" width="120" height="120" loading="lazy">
+      </div>
+      <div class="author-info">
+        <h3 id="author-title">Niloy Kanti Paul</h3>
+        <p>Software Engineer & AI Developer building tools for the modern web. Specializing in Salesforce, full-stack development, and deep learning research. Creator of WebChat.js — designed to make AI accessible for every website.</p>
+        <div class="author-links">
+          <a href="https://dev-nkp.github.io/" target="_blank" rel="noopener noreferrer" class="author-link primary">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            Portfolio
+          </a>
+          <a href="https://github.com/dev-nkp" target="_blank" rel="noopener noreferrer" class="author-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/niloy-kanti-paul/" target="_blank" rel="noopener noreferrer" class="author-link">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA ═══════ -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="reveal">Ready to add AI<br>to your website?</h2>
+    <p class="reveal reveal-delay-1">Get started in under 60 seconds. No signup. No backend. Just intelligence.</p>
+    <div class="hero-ctas reveal reveal-delay-2">
+      <a href="#install" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+        Start Building
+      </a>
+      <a href="https://github.com/DEV-NKP/WebChat" target="_blank" rel="noopener noreferrer" class="btn-secondary">Star on GitHub ⭐</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer>
+  <div class="container">
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="#features">Features</a>
+      <a href="#providers">Providers</a>
+      <a href="#install">Install</a>
+      <a href="#use-cases">Use Cases</a>
+      <a href="#faq">FAQ</a>
+      <a href="#api">API</a>
+      <a href="https://github.com/DEV-NKP/WebChat" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="sitemap.xml">Sitemap</a>
+    </nav>
+    <p style="margin-bottom: 8px;">
+      <strong style="color: var(--t1);">WebChat.js</strong> v1.0.0 · MIT License · Built by
+      <a href="https://dev-nkp.github.io/" target="_blank" rel="noopener noreferrer">Niloy Kanti Paul</a>
+    </p>
+    <p style="font-size: 12px;">
+      Powered by <a href="https://platform.deepseek.com" target="_blank" rel="noopener noreferrer">DeepSeek</a> ·
+      <a href="https://console.groq.com" target="_blank" rel="noopener noreferrer">Groq</a> ·
+      <a href="https://open.bigmodel.cn" target="_blank" rel="noopener noreferrer">GLM-4 (BigModel)</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+/* ── Nav scroll ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 50); }, { passive: true });
+
+/* ── Scroll reveal ── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ── Feature card glow tracking ── */
+document.querySelectorAll('.feature-card').forEach(card => {
+  card.addEventListener('mousemove', e => {
+    const r = card.getBoundingClientRect();
+    card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+    card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+  });
+});
+
+/* ── Install tabs ── */
+function switchTab(btn, id) {
+  document.querySelectorAll('.install-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+  document.querySelectorAll('.install-content').forEach(c => c.classList.remove('active'));
+  btn.classList.add('active');
+  btn.setAttribute('aria-selected', 'true');
+  document.getElementById('tab-' + id).classList.add('active');
+}
+
+/* ── Copy code ── */
+function copyCode(id) {
+  const el = document.getElementById(id);
+  const text = el.textContent || el.innerText;
+  navigator.clipboard.writeText(text.trim()).then(() => {
+    const btn = el.closest('.install-content, .code-block').querySelector('.copy-btn');
+    if (btn) {
+      const orig = btn.innerHTML;
+      btn.innerHTML = '✓ Copied!';
+      btn.style.color = '#22c55e';
+      btn.style.borderColor = 'rgba(34,197,94,0.4)';
+      setTimeout(() => { btn.innerHTML = orig; btn.style.color = ''; btn.style.borderColor = ''; }, 1800);
+    }
+  }).catch(() => {});
+}
+
+/* ── FAQ accordion ── */
+function toggleFaq(el) {
+  const item = el.closest('.faq-item');
+  const isActive = item.classList.contains('active');
+  const answer = item.querySelector('.faq-answer');
+  const inner = item.querySelector('.faq-answer-inner');
+
+  // Close all others
+  document.querySelectorAll('.faq-item.active').forEach(other => {
+    if (other !== item) {
+      other.classList.remove('active');
+      other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      other.querySelector('.faq-answer').style.maxHeight = '0';
+    }
+  });
+
+  if (isActive) {
+    item.classList.remove('active');
+    el.setAttribute('aria-expanded', 'false');
+    answer.style.maxHeight = '0';
+  } else {
+    item.classList.add('active');
+    el.setAttribute('aria-expanded', 'true');
+    answer.style.maxHeight = inner.scrollHeight + 24 + 'px';
+  }
+}
+
+// Keyboard support for FAQ
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFaq(q); }
+  });
+});
+
+/* ── Hero typing animation ── */
+setTimeout(() => {
+  const typing = document.getElementById('typing');
+  const finalMsg = document.getElementById('final-msg');
+  if (typing && finalMsg) {
+    typing.closest('.chat-msg').style.display = 'none';
+    finalMsg.style.display = 'flex';
+    finalMsg.style.animation = 'none';
+    finalMsg.style.opacity = '0';
+    finalMsg.style.transform = 'translateY(10px)';
+    finalMsg.style.transition = 'all 0.4s ease';
+    requestAnimationFrame(() => { finalMsg.style.opacity = '1'; finalMsg.style.transform = 'translateY(0)'; });
+  }
+  setTimeout(() => {
+    const b1 = document.getElementById('badge1');
+    const b2 = document.getElementById('badge2');
+    if (b1) b1.style.display = 'flex';
+    if (b2) b2.style.display = 'flex';
+  }, 300);
+}, 2800);
+
+/* ── Float keyframes (injected to avoid CSS bloat for rare use) ── */
+const floatStyle = document.createElement('style');
+floatStyle.textContent = '@keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}@keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}';
+document.head.appendChild(floatStyle);
+
+/* ── Smooth scroll ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const href = a.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
+</script>
+
+<!-- WebChat.js Widget — lazy-loaded, zero impact on page performance -->
+<script src="./Function/webchat-init.min.js"></script>
+</body>
+</html>

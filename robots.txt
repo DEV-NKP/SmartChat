@@ -1,0 +1,12 @@
+# WebChat.js — robots.txt
+# https://webchat-js.pages.dev/
+
+User-agent: *
+Allow: /
+Disallow: /Function/
+
+# Sitemap
+Sitemap: https://webchat-js.pages.dev/sitemap.xml
+
+# Crawl-delay (respectful to GitHub Pages)
+Crawl-delay: 1
